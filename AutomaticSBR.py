@@ -2,20 +2,12 @@
 #include <avr/io.h>
 #include<util/delay.h>
 #include<avr/interrupt.h>
-
 #define SET_BIT(PORT, PIN) PORT |= (1<<PIN)
 #define CLR_BIT(PORT, PIN) PORT &= ~(1<<PIN)
-
-
 void initADC();
 uint16_t readADC(uint8_t ch);
-
 volatile int Collision_detection = 0;
 volatile int Car_Speed = 0;
-
-
-
-
 int main(void)
 {
     CLR_BIT(DDRD, 2);
@@ -30,11 +22,9 @@ int main(void)
     SET_BIT(DDRB, PB1);
     initADC();
     sei();
-
     TCCR1A|=((1<<COM1A1)|(1<<WGM11)|(1<<WGM10));
     TCCR1B|=((1<<WGM12)|(1<<CS01)|(1<<CS00));
     TCNT1=0x00;
-
     while(1)
     {
         Car_Speed=readADC(1);
@@ -64,14 +54,11 @@ ISR(INT0_vect)
     else
     Collision_detection = 0;
 }
-
-
 void initADC()
 {
     ADMUX=(1<<REFS0);
     ADCSRA=(1<<ADEN)|(7<<ADPS0);
 }
-//ADC conversions
 uint16_t readADC(uint8_t ch)
 {
     ADMUX&=0xf8;
