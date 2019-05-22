@@ -84,7 +84,6 @@ uint16_t readADC(uint8_t ch)
     uint16_t TEMP=0;
     TEMP|=(ADCH<<8);
     TEMP|=(ADCL);
-    //ADC=TEMP;
     return(TEMP);
 }
 
