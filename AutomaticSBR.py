@@ -65,7 +65,7 @@ ISR(INT0_vect)
     Collision_detection = 0;
 }
 
-//Initialization of ADC
+
 void initADC()
 {
     ADMUX=(1<<REFS0);
