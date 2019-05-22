@@ -6,7 +6,7 @@
 #define SET_BIT(PORT, PIN) PORT |= (1<<PIN)
 #define CLR_BIT(PORT, PIN) PORT &= ~(1<<PIN)
 
-//Function prototype
+
 void initADC();
 uint16_t readADC(uint8_t ch);
 
